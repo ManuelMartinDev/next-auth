@@ -41,13 +41,9 @@ export default function Page() {
 You can protect server side rendered pages using the `getSession()` method.
 
 ```js title="pages/server-side-example.js"
-import { useSession, getSession } from 'next-auth/client'
+import { getSession } from 'next-auth/client'
 
-export default function Page() {
-  const [ session, loading ] = useSession()
-
-  if (typeof window !== 'undefined' && loading) return null
-
+export default function Page({session}) {
   if (session) {
     return <>
       <h1>Protected Page</h1>
